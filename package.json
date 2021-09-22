@@ -1,0 +1,55 @@
+{
+  "name": "serverless-cron-template",
+  "version": "0.0.1",
+  "description": "A serverless cron job to run over lambda",
+  "main": "src/handler.js",
+  "repository": "git@github.com:douglasffilho/serverless-cron-template.git",
+  "author": "Douglas Fernandes <douglasf.filho@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "prepare": "husky install",
+    "dev": "sls offline --stage dev --region sa-east-1",
+    "deploy": "sls deploy --stage prod --region sa-east-1",
+    "deploy:with-credentials": "chmod +x deploy && ./deploy",
+    "clean": "chmod +x clean && ./clean",
+    "lint": "eslint . --fix && prettier --write ./src",
+    "test": "NODE_ENV=test jest --coverage --forceExit"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "git-cz"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "13.1.0",
+    "@commitlint/config-conventional": "13.1.0",
+    "eslint": "7.32.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-jest": "24.4.2",
+    "eslint-plugin-prettier": "4.0.0",
+    "git-cz": "4.7.6",
+    "husky": "7.0.2",
+    "jest": "27.2.1",
+    "lint-staged": "11.1.2",
+    "prettier": "2.4.1",
+    "serverless-deployment-bucket": "1.5.1",
+    "serverless-dotenv-plugin": "3.9.0",
+    "serverless-offline": "8.2.0",
+    "serverless-prune-plugin": "1.6.0"
+  },
+  "dependencies": {
+    "debug": "4.3.2"
+  },
+  "engines": {
+    "node": "14.17.3",
+    "npm": "6.14.13",
+    "yarn": "1.22.10"
+  }
+}
